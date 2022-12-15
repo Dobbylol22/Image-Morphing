@@ -1,0 +1,153 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/css-doodle@0.15.3/css-doodle.min.js"></script>
+    <title>Image Morphing</title>
+</head>
+<body>
+    <h1><span style="color:rgb(253, 253, 100);">System<span style="color:rgb(250, 250, 243);">.<span style="color:#e06c75;">out</span>.</span><span style="color:#61afef;">println</span>("</h1>
+    <div class="string">
+      <h1 class="greeting en">Image Morphing</h1>
+      <h1 class="greeting es">Image Warping</h1>
+      <h1 class="greeting de">Image Blending</h1>
+      <h1 class="greeting it">Cross Dissolving</h1>  
+    </div>
+    <h1 class="closure">");</h1>
+</body>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100;500&display=swap');
+        * {
+  margin: 0;
+  padding: 0;
+}
+        css-doodle {
+          --color: @p(#51eaea, #fffde1, #ff9d76, #FB3569);
+          --rule: (
+            :doodle {
+              @grid: 30x1 / 18vmin;
+              --deg: @p(-180deg, 180deg);
+            }
+            :container {
+              perspective: 30vmin;
+            }
+            :after, :before {
+              content: '';
+              background: var(--color); 
+              @place-cell: @r(100%) @r(100%);
+              @size: @r(6px);
+              @shape: heart;
+            }
+          
+            @place-cell: center;
+            @size: 100%;
+          
+            box-shadow: @m2(0 0 50px var(--color));
+            background: @m100(
+              radial-gradient(var(--color) 50%, transparent 0) 
+              @r(-20%, 120%) @r(-20%, 100%) / 1px 1px
+              no-repeat
+            );
+          
+            will-change: transform, opacity;
+            animation: scale-up 12s linear infinite;
+            animation-delay: calc(-12s / @I * @i);
+      
+            @keyframes scale-up {
+              0%, 95.01%, 100% {
+                transform: translateZ(0) rotate(0);
+                opacity: 0;
+              }
+              10% { 
+                opacity: 1; 
+              }
+              95% {
+                transform: 
+                  translateZ(35vmin) rotateZ(@var(--deg));
+              }
+            }
+          )
+        }
+        html, body { 
+  height: 100%; 
+  margin: 0; 
+  overflow: hidden;
+  overflow: clip; 
+  contain: content;
+  background: #282c34;
+  font-size: 2vmin;
+  font-family: JetBrains Mono, monospace;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  color: #e4bb68;
+}
+
+.string {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  animation: move 4s infinite;
+ 
+}
+
+.greeting {
+  position: relative;
+  top: 8.6vmin;
+  animation: white-out 5s infinite;
+}
+
+.closure::after {
+  content: '';
+  position: absolute;
+  height: 25vmin;
+  width: 40vmin;
+  background: #282c34;
+  transform: translate(-45vmin, -24.5vmin);
+
+}
+
+.closure::before {
+  content: '';
+  position: absolute;
+  height: 25vmin;
+  width: 40vmin;
+  background: #282c34;
+  transform: translate(-40vmin, 5vmin);
+  }
+
+.en {
+  color: #f36608;
+}
+
+.es {
+  color: rgb(68, 95, 186);
+}
+
+.de {
+  color: #b936e1;
+}
+
+.it {
+  color: #45d421;
+}
+
+@keyframes move {
+  25% {
+    transform: translatey(-5.8vmin);
+    opacity: 1;
+  }
+  50% {
+    transform: translatey(-11vmin);
+  }
+  75% {
+    transform: translatey(-16.5vmin);
+  }
+}
+
+      </style>
+      <css-doodle use="var(--rule)"></css-doodle>
+      
+</html>
